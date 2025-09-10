@@ -1,0 +1,13 @@
+name: MobileNet-V3 Large
+backend: pytorch
+loader: state_dict
+arch: mobilenet_v3_large
+weights_path: models/mnv3_large_best.pth
+num_classes: 2
+class_names: ["Good_Cut", "Bad_Cut"]
+use_hypernetwork: false
+preprocess:
+  resize_shorter: 256
+  center_crop: 224
+  mean: [0.485, 0.456, 0.406]
+  std:  [0.229, 0.224, 0.225]

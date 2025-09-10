@@ -1,0 +1,13 @@
+name: EfficientNet-B7
+backend: pytorch
+loader: state_dict
+arch: efficientnet_b7
+weights_path: models/effb7_best.pth
+num_classes: 2
+class_names: ["Good_Cut", "Bad_Cut"]
+use_hypernetwork: false
+preprocess:
+  resize_shorter: 380
+  center_crop: 380
+  mean: [0.485, 0.456, 0.406]
+  std:  [0.229, 0.224, 0.225]

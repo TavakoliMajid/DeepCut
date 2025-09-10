@@ -1,0 +1,23 @@
+name: MobileNet-V3 Large (HN)
+backend: pytorch
+loader: state_dict
+arch: mobilenet_v3_large
+weights_path: models/mnv3_large_hn_best.pth
+num_classes: 2
+class_names: ["Good_Cut", "Bad_Cut"]
+use_hypernetwork: true
+metadata:
+  custom_model_class: MobileNetV3HyperNetWrapper
+  schema:
+    - key: slide_temp_c
+      type: float
+      default: 22.0
+    - key: staining_proto
+      type: categorical
+      choices: ["proto1","proto2"]
+      default: "proto1"
+preprocess:
+  resize_shorter: 256
+  center_crop: 224
+  mean: [0.485, 0.456, 0.406]
+  std:  [0.229, 0.224, 0.225]

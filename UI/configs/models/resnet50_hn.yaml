@@ -1,0 +1,23 @@
+name: ResNet-50 (HN)
+backend: pytorch
+loader: state_dict
+arch: resnet50
+weights_path: models/resnet50_hn_best.pth
+num_classes: 2
+class_names: ["Good_Cut", "Bad_Cut"]
+use_hypernetwork: true
+metadata:
+  custom_model_class: ResNet50HyperNetWrapper
+  schema:
+    - key: magnification
+      type: float
+      default: 20
+    - key: lab_id
+      type: categorical
+      choices: ["A","B","C"]
+      default: "A"
+preprocess:
+  resize_shorter: 256
+  center_crop: 224
+  mean: [0.485, 0.456, 0.406]
+  std:  [0.229, 0.224, 0.225]
